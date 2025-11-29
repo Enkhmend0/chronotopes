@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDENTITY_SIM.EXE v1.0</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <!-- Scenario Selection / Landing View -->
+    <div id="landing" class="view active">
+        <h1>Identity Simulation</h1>
+        <p class="description">
+            Explore how identity performances shift across different chronotopes and social time space contexts that shape what feels "authentic" or "inauthentic" in communication.
+        </p>
+        <div class="scenario-selection">
+            <h2>Choose a Scenario</h2>
+            <div class="scenario-buttons" id="scenarioButtons">
+                <!-- Scenario buttons will be dynamically inserted here -->
+    </div>
+        </div>
+    </div>
+
+    <!-- Node View Section -->
+    <div id="node" class="view">
+        <div class="header-section">
+            <div class="scenario-name" id="scenarioName"></div>
+            <div class="chronotope-label" id="chronotopeLabel"></div>
+            <div class="location-label" id="locationLabel"></div>
+        </div>
+        <div class="main-text">
+            <div class="context-text" id="contextText"></div>
+            <div class="prompt-text" id="promptText"></div>
+        </div>
+        <div class="options-area">
+            <div class="options-container" id="optionsContainer">
+                <!-- Options will be dynamically inserted here -->
+    </div>
+        </div>
+    </div>
+
+    <!-- Feedback View -->
+    <div id="feedback" class="view">
+        <div class="header-section">
+            <div class="scenario-name" id="feedbackScenarioName"></div>
+            <div class="chronotope-label" id="feedbackChronotopeLabel"></div>
+            <div class="location-label" id="feedbackLocationLabel"></div>
+        </div>
+        <div class="feedback-area">
+            <div class="npc-reply" id="npcReply"></div>
+            <div class="feedback-text" id="feedbackText"></div>
+        </div>
+        <button id="continueBtn" class="btn btn-primary">Continue</button>
+    </div>
+
+    <!-- End Screen View -->
+    <div id="end" class="view">
+        <h2>You completed this scenario.</h2>
+        <div class="summary-stats" id="summaryStats"></div>
+        <div class="summary-message" id="summaryMessage"></div>
+        <button id="restartBtn" class="btn btn-primary">Back to Main Menu</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

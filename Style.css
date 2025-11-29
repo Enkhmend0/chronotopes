@@ -1,0 +1,428 @@
+/* Retro 80s Hacker Terminal Style */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #000000;
+    color: #00ff00;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* CRT Scanline Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Container */
+body > * {
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* View Containers */
+.view {
+    display: none;
+    opacity: 0;
+    background: #000000;
+    border: 4px solid #00ff00;
+    padding: 30px;
+    box-shadow: 
+        0 0 20px #00ff00,
+        inset 0 0 20px rgba(0, 255, 0, 0.1);
+    position: relative;
+}
+
+.view.active {
+    display: block;
+    opacity: 1;
+    animation: terminalFlicker 0.1s;
+}
+
+@keyframes terminalFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.98; }
+}
+
+/* Typing Animation */
+.typing {
+    border-right: 2px solid #00ff00;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { border-color: #00ff00; }
+    51%, 100% { border-color: transparent; }
+}
+
+/* Typography */
+h1 {
+    color: #00ff00;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00ff00;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+h2 {
+    color: #ffff00;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 10px;
+    text-shadow: 0 0 5px #ffff00;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 1.2em;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.description {
+    text-align: center;
+    color: #00ffff;
+    font-size: 1em;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Landing Page */
+#landing {
+    text-align: center;
+}
+
+.scenario-selection h2 {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    color: #ffff00;
+    font-size: 1.3em;
+}
+
+.scenario-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Header Section */
+.header-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #00ff00;
+}
+
+.scenario-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffff00;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #ffff00;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 1em;
+}
+
+.chronotope-label {
+    font-size: 1.1em;
+    color: #00ffff;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+.location-label {
+    font-size: 1em;
+    color: #ff00ff;
+    font-style: italic;
+    text-shadow: 0 0 5px #ff00ff;
+}
+
+/* Main Text Section */
+.main-text {
+    margin-bottom: 30px;
+}
+
+.context-text {
+    color: #00ffff;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(0, 255, 255, 0.1);
+    border-left: 4px solid #00ffff;
+    font-size: 1.05em;
+    line-height: 1.7;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.prompt-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(255, 255, 0, 0.1);
+    border-left: 4px solid #ffff00;
+    color: #ffff00;
+    line-height: 1.7;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+}
+
+/* Options Area */
+.options-area {
+    margin-top: 30px;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 3px solid;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '>';
+    margin-right: 10px;
+    color: #000000;
+}
+
+.btn-primary {
+    background: #000000;
+    color: #00ff00;
+    border-color: #00ff00;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto 0;
+    display: block;
+    box-shadow: 0 0 15px #00ff00;
+}
+
+.btn-primary:hover {
+    background: #00ff00;
+    color: #000000;
+    box-shadow: 0 0 25px #00ff00;
+    transform: scale(1.05);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-scenario {
+    background: #000000;
+    color: #00ff00;
+    border-color: #00ff00;
+    text-align: left;
+    padding: 20px;
+    width: 100%;
+    font-size: 1em;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.btn-scenario:hover {
+    background: #00ff00;
+    color: #000000;
+    box-shadow: 0 0 20px #00ff00;
+    transform: translateX(5px);
+}
+
+.btn-option {
+    background: #000000;
+    color: #ffff00;
+    border-color: #ffff00;
+    text-align: left;
+    padding: 20px;
+    width: 100%;
+    font-size: 1em;
+    box-shadow: 0 0 10px #ffff00;
+}
+
+.btn-option:hover {
+    background: #ffff00;
+    color: #000000;
+    box-shadow: 0 0 20px #ffff00;
+    transform: translateX(5px);
+}
+
+.btn-option:active {
+    transform: translateX(2px);
+}
+
+/* Feedback Area */
+.feedback-area {
+    margin: 30px 0;
+}
+
+.npc-reply {
+    background: rgba(0, 255, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #00ff00;
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #00ff00;
+    font-style: italic;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.feedback-text {
+    background: rgba(255, 255, 0, 0.1);
+    padding: 25px;
+    border-left: 4px solid #ffff00;
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #ffff00;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+}
+
+/* End Screen */
+#end {
+    text-align: center;
+}
+
+.summary-stats {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid #00ffff;
+    font-size: 1.1em;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.summary-stats ul {
+    list-style: none;
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.summary-stats li {
+    padding: 10px 0;
+    border-bottom: 1px solid #00ffff;
+    color: #00ffff;
+}
+
+.summary-stats li:last-child {
+    border-bottom: none;
+}
+
+.summary-message {
+    margin: 30px 0;
+    line-height: 1.9;
+    font-size: 1.15em;
+    color: #00ff00;
+    padding: 20px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid #00ff00;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .view {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    .description {
+        font-size: 0.9em;
+    }
+
+    .btn {
+        font-size: 0.9em;
+        padding: 12px 24px;
+    }
+
+    .btn-option {
+        padding: 15px;
+    }
+
+    .scenario-name {
+        font-size: 0.9em;
+    }
+
+    .chronotope-label {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 0.9em;
+    }
+
+    .view {
+        padding: 15px;
+    }
+
+    .scenario-name {
+        font-size: 0.8em;
+    }
+}
