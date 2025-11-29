@@ -70,4 +70,3 @@ Just open `index.html` in your browser - no build process needed!
 - `index.html` - Main HTML structure
 - `Style.css` - Retro 80s styling
 - `script.js` - Game logic and animations
-
