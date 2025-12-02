@@ -1163,20 +1163,15 @@ function initializeScenarioSelection() {
     console.error('scenarioButtons element not found!');
     return;
   }
-  
+
   scenarioButtons.innerHTML = '';
-  
-  // Get unique scenarios from NODES
-  const scenarios = new Set();
-  Object.values(NODES).forEach(node => {
-    scenarios.add(node.scenario);
-  });
-  
-  // Create buttons for each scenario
-  Array.from(scenarios).forEach(scenarioName => {
+
+  // ✅ Only use scenarios that actually have a defined start node
+  Object.keys(START_NODES).forEach(scenarioName => {
     const button = document.createElement('button');
     button.className = 'btn btn-scenario';
     button.textContent = scenarioName;
+
     button.addEventListener('click', () => {
       playRetroSound('select');
       const startNodeId = START_NODES[scenarioName];
@@ -1186,9 +1181,12 @@ function initializeScenarioSelection() {
         console.error('No start node found for scenario:', scenarioName);
       }
     });
+
     scenarioButtons.appendChild(button);
   });
 }
+
+
 
 /**
  * Start a scenario from a given node ID
