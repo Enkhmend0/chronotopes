@@ -87,509 +87,1011 @@ function typeText(element, text, speed = 30, callback = null) {
 
 // NODES object - DO NOT MODIFY
 const NODES = {
+
   // =========================
+
   // SCENARIO 1: TAXI IN DOHA
+
   // =========================
+
+
 
   "taxi_1": {
+
     id: "taxi_1",
-    scenario: "You just went shopping for an arabic cologne and now you're taking a taxi in Doha ",
+
+    scenario: "You just bought Arabic cologne and now you're taking a taxi in Doha",
+
     chronotope: "Everyday service encounter",
+
     location: "Doha, Qatar",
+
     context:
-      "You get into a taxi. The driver glances at you and seems to assume you might speak Arabic based on how you look.",
+
+      "You get into a taxi. The driver glances at you and seems to assume you might speak Arabic based on how you look and smell.",
+
     prompt: 'Driver: "Salam alaikum"',
+
     options: [
+
       {
+
         id: "taxi_1A",
-        text: 'You: "Wa alaikum salam! I\'m good, How are you?"',
+
+        text: 'You: "Wa alaikum salam! I\'m good, how are you?"',
+
         npcReply: 'Driver: "Good, good. Where you going today, my friend?"',
+
         feedback:
-          "You echoed the greeting and used a familiar religious phrase. Even in English, those small cues are read as enoughness. The driver now treats you as someone who fits his expected interaction frame.",
+
+          "You answer with the same greeting and a familiar phrase. Even though you're speaking English, these small details make the driver feel you're close to his world and background.",
+
         nextId: "taxi_2A",
+
         isAligned: true
+
       },
+
       {
+
         id: "taxi_1B",
+
         text:
+
           'You: "Hey! Sorry, I don\'t speak Arabic."',
+
         npcReply: 'Driver: "Ah, okay, no problem! Where do you want to go?"',
+
         feedback:
-          "You gently refused the identity the driver projected onto you and renegotiated the chronotope into an English-speaking frame. This is still polite but pushes back on the initial categorization.",
+
+          "You politely explain that you don't speak Arabic and ask to stay in English. You gently step out of the role he guessed for you and reset the interaction in a way that works for you.",
+
         nextId: "taxi_2B",
+
         isAligned: true
+
       }
+
     ]
+
   },
+
+
 
   "taxi_2A": {
+
     id: "taxi_2A",
+
     scenario: "Taxi in Doha",
+
     chronotope: "Everyday service encounter",
+
     location: "Doha, Qatar",
+
     context: "You're driving along the highway.",
+
     prompt: 'Driver: "So, you live here or just visiting?"',
+
     options: [
+
       {
+
         id: "taxi_2A1",
+
         text: 'You: "I live here. Been here a while."',
+
         npcReply: 'Driver: "Mashallah, nice. You know the city very well then!"',
+
         feedback:
-          "You keep feeding the same identity the driver assigned you. You show consistent signs that confirm his reading, which stabilizes the chronotope as local-ish and familiar.",
+
+          "You continue to answer like someone who belongs here. You confirm the driver's guess about you, so the conversation stays in a relaxed, friendly \"local\" mode.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "taxi_2A2",
+
         text:
+
           'You: "Actually, I don\'t really live here, I just know a few phrases. I\'m still figuring things out."',
-        npcReply: 'Driver: "Ah, okay, okay. No problem, I help you. Where you from?"',
+
+        npcReply:
+
+          'Driver: "Ah, okay, okay. No problem, I help you. Where you from?"',
+
         feedback:
-          "You reveal that the initial interpretation was partly wrong. This shows how thin identity signals can mislead, even though they were enough to trigger the first assumption.",
+
+          "You show that his first impression wasn't fully accurate. This reminds us how small signs, like a greeting or a few words, can change our perceived identity within that context.",
+
         nextId: null,
+
         isAligned: true
+
       }
+
     ]
+
   },
+
+
 
   "taxi_2B": {
+
     id: "taxi_2B",
+
     scenario: "Taxi in Doha",
+
     chronotope: "Everyday service encounter",
+
     location: "Doha, Qatar",
+
     context: "You're now speaking in English comfortably.",
+
     prompt: 'Driver: "Where are you from? You look like maybe from this region."',
+
     options: [
+
       {
+
         id: "taxi_2B1",
+
         text:
+
           'You: "Yeah, I get that a lot. My background is Turkish, but I grew up elsewhere."',
+
         npcReply:
+
           'Driver: "Ah, I see, I see. World is small now, many stories like this."',
+
         feedback:
-          "You treat the assumption as understandable and use it to explain a more complex identity story. This highlights how chronotopes rely on quick stereotypes, but people are more layered.",
+
+          "You treat his guess as understandable and use it to share a more complicated version of who you are. You show that people's quick judgments based on looks and small signals don't always match the real story.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "taxi_2B2",
+
         text: 'You: "Does it matter? I just want to get to my destination."',
+
         npcReply: 'Driver: "Okay, no problem."',
+
         feedback:
-          "You reject the question and shut down small talk. That's your right, but within this chronotope, it is read as cold or hostile, shifting the ride to a distant, transactional mode.",
+
+          "You shut down the personal question and keep the ride strictly practical. That's your choice, but it also makes the atmosphere more distant and less friendly.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
 
+
+
   // =========================
+
   // SCENARIO 2: NEW YORK STREET
+
   // =========================
+
+
 
   "ny_1": {
+
     id: "ny_1",
+
     scenario: "New York Sidewalk",
+
     chronotope: "Fast, low-context urban public space",
+
     location: "Manhattan, New York, USA",
+
     context:
+
       "You're walking down a crowded Manhattan sidewalk at rush hour. Everyone is moving quickly.",
+
     prompt:
+
       "You accidentally bump someone's shoulder. The person turns briefly toward you.",
+
     options: [
+
       {
+
         id: "ny_1A",
+
         text: 'You: "Sorry." *you keep walking without breaking stride*',
+
         npcReply: 'Stranger: *keeps going*',
+
         feedback:
-          "You follow the compressed, efficient script: brief apology, no drama, no slowing traffic. Here, you read the chronotopic expecatiton is about being light and fast.",
+
+          "You use a short apology and keep moving. This matches how people usually act here: quick, simple, and without drama.",
+
         nextId: "ny_2A",
+
         isAligned: true
+
       },
+
       {
+
         id: "ny_1B",
+
         text:
+
           'You: "Oh my God, I\'m so sorry! I didn\'t see you there, what\'s your name?"',
+
         npcReply: 'Stranger: "Yeah… it\'s fine." *walks away*',
+
         feedback:
-          "Your English is polite, but too big for this space. In this chronotope, over apology and unrelated question feel out of place.",
+
+          "Your words are polite, but they feel too big for a tiny bump in a busy street. Asking for the person's name and making it emotional can feel strange and uncomfortable here.",
+
         nextId: "ny_2B",
+
         isAligned: false
+
       }
+
     ]
+
   },
+
+
 
   "ny_2A": {
+
     id: "ny_2A",
+
     scenario: "New York Sidewalk",
+
     chronotope: "Fast, low-context urban public space",
+
     location: "Manhattan, New York, USA",
+
     context: "A block later, someone bumps into you harder and says nothing.",
-    prompt: "Another stranger hits your shoulder and keeps walking without looking back.",
+
+    prompt:
+
+      "Another stranger hits your shoulder and keeps walking without looking back.",
+
     options: [
+
       {
+
         id: "ny_2A1",
+
         text:
+
           'You: *briefly glance, keep walking, mutter to yourself* "Whatever."',
+
         npcReply: "",
+
         feedback:
-          "You fully adapt: you let the small aggression slide and prioritize flow. In this chronotope, not every contact deserves a scene.",
+
+          "You decide not to react and just move on. In a place like this, people often ignore small collisions and focus on getting where they're going.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "ny_2A2",
+
         text: 'You: "Hey! You bumped into me!"',
+
         npcReply: "The stranger doesn't turn around.",
+
         feedback:
-          "You try to enforce a different norm (mutual repair, face-to-face resolution) in a space that often ignores that. You feel more wronged, but the environment does not respond.",
+
+          "You try to call them out and fix the situation, but most people here don't stop for that. You end up more frustrated, while the street just keeps moving around you.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
+
+
 
   "ny_2B": {
+
     id: "ny_2B",
+
     scenario: "New York Sidewalk",
+
     chronotope: "Fast, low-context urban public space",
+
     location: "Manhattan, New York, USA",
+
     context:
-      "You've just over reacted. You still feel awkward. A friend walking with you notices.",
+
+      "You've just overreacted. You still feel awkward. A friend walking with you notices.",
+
     prompt: 'Friend: "You okay? That was… a bit weird."',
+
     options: [
+
       {
+
         id: "ny_2B1",
+
         text:
+
           'You: "Yeah, I guess I overreacted. People don\'t really stop here, do they?"',
+
         npcReply: 'Friend: "Exactly. Just a quick \'sorry\' and keep moving."',
+
         feedback:
-          "You explicitly recognize the chronotopic rule and start to recalibrate. You're learning the local enoughness level.",
+
+          "You notice that your habits don't really match how people behave here and start adjusting. You're learning how this city expects people to act in public.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "ny_2B2",
+
         text:
+
           'You: "I just think it\'s basic respect to check if someone\'s okay."',
-        npcReply: 'Friend: "Yeah, but this is New York. People don\'t have time for that."',
+
+        npcReply:
+
+          'Friend: "Yeah, but this is New York. People don\'t have time for that."',
+
         feedback:
-          "You hold onto your original norm. This creates a clash and shows how your idea of respect doesn't match this chronotope.",
+
+          "You hold on to your own idea of what respect should look like. That belief isn't wrong, but it clashes with how most people around you behave in this setting.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
 
+
+
   // =========================
+
   // SCENARIO 3: SLOW COASTAL TOWN
+
   // =========================
+
+
 
   "slow_1": {
+
     id: "slow_1",
+
     scenario: "Slow Coastal Town Street",
+
     chronotope: "Slow-paced, relational small town space",
+
     location: "Small coastal town",
+
     context:
+
       "You're walking through a narrow street in a quiet coastal town. People move more slowly and make eye contact.",
+
     prompt:
+
       "You bump into a local person while turning a corner. They stumble a little and look at you.",
+
     options: [
+
       {
+
         id: "slow_1A",
+
         text: 'You: "Sorry." *you keep walking without stopping*',
+
         npcReply: 'Local: "Okay…?" *watches you walk off*',
+
         feedback:
-          "The same brief apology that works in New York feels cold here. In this chronotope, enoughness includes stopping, checking in, and maybe exchanging a few words.",
+
+          "You use the fast city style and walk away. Here, that feels cold and rushed, because people usually stop and check in after even small accidents.",
+
         nextId: "slow_2A",
+
         isAligned: false
+
       },
+
       {
+
         id: "slow_1B",
+
         text: 'You: "Oh, sorry! Are you okay?" *you stop and look at them*',
+
         npcReply:
+
           'Local: "Yes, yes, I\'m fine. These streets are small, it happens."',
+
         feedback:
-          "You match the local rhythm: pause, eye contact, mild small talk. This is read as respectful and human, not overdramatic.",
+
+          "You slow down, make eye contact, and ask if they're okay. This fits the local rhythm, where people expect a little more time and friendliness.",
+
         nextId: "slow_2B",
+
         isAligned: true
+
       }
+
     ]
+
   },
+
+
 
   "slow_2A": {
+
     id: "slow_2A",
+
     scenario: "Slow Coastal Town Street",
+
     chronotope: "Slow-paced, relational small town space",
+
     location: "Small coastal town",
+
     context:
+
       "You kept walking. A friend from the town is with you and saw the interaction.",
+
     prompt: 'Friend: "You didn\'t even stop. That looked a bit rude."',
+
     options: [
+
       {
+
         id: "slow_2A1",
+
         text:
+
           'You: "Oh, do people usually stop and talk more here? I\'m used to just saying sorry and moving on."',
-        npcReply:
-          'Friend: "Yeah, here we usually check in. People like to feel seen."',
+
+        npcReply: 'Friend: "Yeah, here we usually check in. People like to feel seen."',
+
         feedback:
-          "You realize that your imported script from another chronotope doesn't fit. You show willingness to adapt, which is key to understanding chronotopes.",
+
+          "You notice that what feels normal to you seems rude here. You show you're open to changing how you act to match local expectations.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "slow_2A2",
+
         text: 'You: "I said sorry, that should be enough anywhere."',
-        npcReply:
-          'Friend: "I mean… people might think you\'re cold."',
+
+        npcReply: 'Friend: "I mean… people might think you\'re cold."',
+
         feedback:
-          "You insist that one script should work everywhere, denying how context shapes norms. This is a kind of chronotope blindness.",
+
+          "You insist that your way should work in every place. That attitude makes it harder to understand why people around you might see you as distant.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
+
+
 
   "slow_2B": {
+
     id: "slow_2B",
+
     scenario: "Slow Coastal Town Street",
+
     chronotope: "Slow-paced, relational small town space",
+
     location: "Small coastal town",
+
     context:
+
       "You stopped and checked in. The local seems more relaxed and curious.",
+
     prompt: 'Local: "Where are you from? I don\'t think I\'ve seen you here before."',
+
     options: [
+
       {
+
         id: "slow_2B1",
+
         text:
+
           'You: "I\'m just visiting for a few days. It\'s really peaceful here."',
-        npcReply:
-          'Local: "Welcome. Enjoy your stay."',
+
+        npcReply: 'Local: "Welcome. Enjoy your stay."',
+
         feedback:
-          "You accept the invitation to relational small talk without going overboard. This fits a local norm where even small collisions can turn into short, friendly exchanges.",
+
+          "You share a small detail and respond warmly. Here, short friendly conversations with strangers are normal and appreciated.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "slow_2B2",
+
         text:
+
           'You: "Oh, just visiting. Anyway, have a good day." *you turn and leave quickly*',
-        npcReply:
-          'Local: "Okay… you too."',
+
+        npcReply: 'Local: "Okay… you too."',
+
         feedback:
-          "You stop the interaction as soon as it turns personal. In this chronotope, that choice can be read as disinterest, even though your words are polite.",
+
+          "You end the chat quickly as soon as it becomes a bit personal. In this town, that can feel like you're not really interested in connecting with people.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
 
+
+
   // =========================
-  // SCENARIO 4: PARIS CAFÉ
+
+  // SCENARIO 4: PARIS CAFE
+
   // =========================
+
+
 
   "paris_1": {
+
     id: "paris_1",
-    scenario: "Busy Paris Café",
+
+    scenario: "Busy Paris Cafe",
+
     chronotope: "Ritualized public politeness",
+
     location: "Paris, France",
+
     context:
+
       "It's lunchtime in a crowded Paris cafe. People stand in a short line to order at the counter.",
+
     prompt:
+
       "You reach the counter. The barista looks at you, waiting for your order.",
+
     options: [
+
       {
+
         id: "paris_1A",
-        text: 'You: "Hi, Can I please have a macchiato frappucino?"',
+
+        text: 'You: "Hi, can I please have a macchiato frappuccino?"',
+
         npcReply: 'Barista: "Of course. Anything else for you?"',
+
         feedback:
-          "You start with a greeting and use 'please,' which fits the local expectation that you acknowledge the other person before requesting something.",
+
+          "You greet the barista and say \"please\" before asking for your drink. This matches the local habit of adding a bit of politeness before making a request.",
+
         nextId: "paris_2A",
+
         isAligned: true
+
       },
+
       {
+
         id: "paris_1B",
+
         text: 'You: "Coffee. Medium."',
+
         npcReply: 'Barista: "Okay." *tone is noticeably cooler*',
+
         feedback:
-          "Your order is grammatically fine, but you skip the politeness. In this chronotope, that's read as abrupt or mildly rude.",
+
+          "Your order is clear, but it sounds more like a command than a request. Skipping the greeting and \"please\" makes you seem blunt and less polite here.",
+
         nextId: "paris_2B",
+
         isAligned: false
+
       }
+
     ]
+
   },
+
+
 
   "paris_2A": {
+
     id: "paris_2A",
-    scenario: "Busy Paris Café",
+
+    scenario: "Busy Paris Cafe",
+
     chronotope: "Ritualized public politeness",
+
     location: "Paris, France",
+
     context:
+
       "You've ordered politely. The barista is preparing your drink while others queue behind you.",
+
     prompt:
+
       'Barista: "You can sit, I will bring it to your table. Name for the order?"',
+
     options: [
+
       {
+
         id: "paris_2A1",
+
         text: 'You: "It\'s Enkhmend. Thank you so much."',
+
         npcReply: 'Barista: "Thanks. It will be just a moment."',
+
         feedback:
-          "You keep the tone light and appreciative without slowing the line. You remain inside the polite, efficient script of this chronotope.",
+
+          "You give your name and thank them without creating any delay. You stay friendly and respectful while also keeping the line moving.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "paris_2A2",
+
         text:
+
           'You: "Why do you need my name? I\'ll just wait here." *you block the counter*',
+
         npcReply:
-          'Barista: "It\'s easier for us. Please step to the side"',
+
+          'Barista: "It\'s easier for us. Please step to the side."',
+
         feedback:
-          "You push against a small local norm meant to keep things organized. It makes you stand out as someone who resists the expected flow.",
+
+          "You resist a simple system that helps the staff stay organized. It makes you stand out as difficult and slows things down for everyone behind you.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
+
+
 
   "paris_2B": {
+
     id: "paris_2B",
-    scenario: "Busy Paris Café",
+
+    scenario: "Busy Paris Cafe",
+
     chronotope: "Ritualized public politeness",
+
     location: "Paris, France",
+
     context:
+
       "You gave a very direct order. The barista is making your coffee in silence.",
+
     prompt:
+
       "You notice the barista seems distant. You're not sure if you did something wrong.",
+
     options: [
+
       {
+
         id: "paris_2B1",
+
         text:
+
           'You: "Sorry, I\'m not from here. I should have said hello first. Could I also get a croissant, please?"',
+
         npcReply:
+
           'Barista: *smiles a little* "No problem. One croissant. Anything else?"',
+
         feedback:
-          "You repair the interaction by acknowledging the missed politeness move and adjusting. You show you're willing to learn the local script.",
+
+          "You admit you missed a small politeness step and adjust your tone. This can soften the tension and shows you're willing to learn how people here expect interactions to go.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "paris_2B2",
+
         text:
+
           'You: "Why is everyone here so serious? I just ordered coffee."',
+
         npcReply:
+
           'Barista: "Your coffee will be ready soon." *tone remains cold*',
+
         feedback:
-          "You interpret the situation only through your own norm and dismiss the local one. This widens the distance and reinforces the sense of cultural clash.",
+
+          "You judge the situation only by your own standards and ignore local expectations. This makes the distance between you and the barista even bigger.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
 
+
+
   // =========================
+
   // SCENARIO 5: TOKYO KONBINI
+
   // =========================
+
+
 
   "konbini_1": {
+
     id: "konbini_1",
+
     scenario: "Tokyo Convenience Store",
+
     chronotope: "Hyper-efficient, scripted service interaction",
+
     location: "Tokyo, Japan",
+
     context:
+
       "You are at the counter of a small convenience store. There's a short line behind you.",
+
     prompt:
+
       "The cashier has scanned your items and told you the total. They look up, waiting for payment.",
+
     options: [
+
       {
+
         id: "konbini_1A",
+
         text:
+
           'You: "Okay." *you pay, then say* "Thank you."',
+
         npcReply: 'Cashier: "Thank you." *gives a small nod*',
+
         feedback:
-          "You keep the interaction simple and efficient, matching the scripted, low-small-talk nature of this chronotope.",
+
+          "You pay quickly, say thank you, and keep things simple. This matches the usual style here: fast and polite without extra talking.",
+
         nextId: "konbini_2A",
+
         isAligned: true
+
       },
+
       {
+
         id: "konbini_1B",
+
         text:
+
           'You: "Hey, how\'s your day going? Has it been busy?"',
+
         npcReply:
+
           'Cashier: *looks slightly surprised* "It\'s okay. Do you need a bag?"',
+
         feedback:
-          "Your attempt at small talk is friendly in some cultures, but here it disrupts a tightly scripted, fast-paced interaction.",
+
+          "Your small talk would feel friendly in many places, but here it interrupts a very short and routine kind of interaction.",
+
         nextId: "konbini_2B",
+
         isAligned: false
+
       }
+
     ]
+
   },
+
+
 
   "konbini_2A": {
+
     id: "konbini_2A",
+
     scenario: "Tokyo Convenience Store",
+
     chronotope: "Hyper-efficient, scripted service interaction",
+
     location: "Tokyo, Japan",
+
     context:
+
       "You've paid and received your items. The interaction has been smooth and quick.",
+
     prompt:
+
       "You're about to leave the counter.",
+
     options: [
+
       {
+
         id: "konbini_2A1",
+
         text:
+
           'You: *give a small nod* "Thanks." *you step aside to pack your things*',
+
         npcReply: "",
+
         feedback:
-          "You exit the interaction cleanly and make space for the next customer. This respects both the pace and the physical space of the chronotope.",
+
+          "You move away from the counter so the next person can pay. You respect both the speed and the limited space in the shop.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "konbini_2A2",
+
         text:
+
           'You: *stay at the counter, slowly organizing your bag while others wait behind you*',
+
         npcReply: "",
+
         feedback:
-          "You hold the front of the line while organizing your things. Even without words, this clashes with the expectation of quick turnover.",
+
+          "You block the space while you sort your things. Even though you're not talking, your body still slows everyone else down.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   },
 
+
+
   "konbini_2B": {
+
     id: "konbini_2B",
+
     scenario: "Tokyo Convenience Store",
+
     chronotope: "Hyper-efficient, scripted service interaction",
+
     location: "Tokyo, Japan",
+
     context:
+
       "You tried to start small talk. The cashier responded briefly, but the interaction feels a bit awkward.",
+
     prompt:
+
       "You sense some awkwardness and notice people waiting behind you.",
+
     options: [
+
       {
+
         id: "konbini_2B1",
+
         text:
+
           'You: "Ah, sorry, I\'ll just pay. Thank you." *you pay quickly and step aside*',
+
         npcReply: "",
+
         feedback:
-          "You adjust by prioritizing speed and efficiency. You show you're willing to fit into the local rhythm once you notice the mismatch.",
+
+          "You notice the mismatch and change your behavior to keep things quick. You show that you can adjust when the situation calls for it.",
+
         nextId: null,
+
         isAligned: true
+
       },
+
       {
+
         id: "konbini_2B2",
+
         text:
+
           'You: "You seem busy. People here don\'t really talk much, huh?" *you linger at the counter*',
+
         npcReply: "",
+
         feedback:
-          "You comment on the norm while still holding up the line. This not only keeps you out of sync with the chronotope, it also adds social pressure for everyone involved.",
+
+          "You comment on how people act here while still standing in the way. This adds more pressure for the cashier and the people behind you.",
+
         nextId: null,
+
         isAligned: false
+
       }
+
     ]
+
   }
+
 };
 
 // State management
@@ -607,10 +1109,10 @@ const views = {
 
 // Starting node IDs for each scenario
 const START_NODES = {
-  "You just went shopping for an arabic cologne and now you're taking a taxi in Doha ": "taxi_1",
+  "You just bought Arabic cologne and now you're taking a taxi in Doha": "taxi_1",
   "New York Sidewalk": "ny_1",
   "Slow Coastal Town Street": "slow_1",
-  "Busy Paris Café": "paris_1",
+  "Busy Paris Cafe": "paris_1",
   "Tokyo Convenience Store": "konbini_1"
 };
 
